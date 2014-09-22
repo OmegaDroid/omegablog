@@ -1,3 +1,4 @@
 .idea
 *.pyc
 */COMPILED/*
+omegablog/blog_site/developer_settings.py
