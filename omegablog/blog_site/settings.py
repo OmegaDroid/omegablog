@@ -1,10 +1,18 @@
-from djangoappengine.settings_base import *
 import os
 
 BASE_DIR = os.path.join(os.path.dirname(__file__), "..")
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'HOST': '/cloudsql/elite-epoch-711:omega-blog',
+        'NAME': 'omega-blog-db',
+        'USER': 'dan',
+    }
+}
 
 try:
     from developer_settings import *
@@ -16,10 +24,6 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
-
-DATABASES['native'] = DATABASES['default']
-DATABASES['default'] = {'ENGINE': 'dbindexer', 'TARGET': 'native'}
-#AUTOLOAD_SITECONF = 'indexes'
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
@@ -90,8 +94,6 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
-    'autoload.middleware.AutoloadMiddleware',
-
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -114,11 +116,21 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.sessions',
     'django.contrib.staticfiles',
-    'djangotoolbox',
-    'autoload',
-    'dbindexer',
 
+    'blog_accounts',
     'blog',
+)
+
+
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+    'django.core.context_processors.request',
 )
 
 # A sample logging configuration. The only tangible logging
