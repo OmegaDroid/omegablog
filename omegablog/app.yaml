@@ -5,6 +5,12 @@ api_version: 1
 threadsafe: true
 
 handlers:
+- url: /static/css/COMPILED/
+  static_dir: static/css/COMPILED
+
+- url: /static/js/
+  static_dir: static/js
+
 - url: .*
   script: blog_site.wsgi.application
 
