@@ -16,7 +16,7 @@ class LoginButton(ServerTestCase):
     def test_user_clicks_login___taken_to_login_screen(self):
         wait_for_element(self.driver, By.ID, "login-link").click()
 
-        self.assertEqual(self.live_server_url + "/login/?next=/", self.driver.current_url)
+        self.assertEqual(self.live_server_url + "/accounts/login/?next=/", self.driver.current_url)
 
     def test_logs_in_as_user___taken_back_to_home_screen(self):
         get_user_model().objects.create_user("user", password="password")
