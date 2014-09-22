@@ -1,10 +1,15 @@
+from djangoappengine.settings_base import *
 import os
-import sys
 
 BASE_DIR = os.path.join(os.path.dirname(__file__), "..")
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
+
+try:
+    from developer_settings import *
+except ImportError:
+    pass
 
 ADMINS = (
     # ('Your Name', 'your_email@example.com'),
@@ -12,26 +17,9 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
-
-if "test" in sys.argv:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': os.path.join(BASE_DIR, "db.sqlite"),
-        }
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': '',                      # Or path to database file if using sqlite3.
-            # The following settings are not used with sqlite3:
-            'USER': '',
-            'PASSWORD': '',
-            'HOST': '',                      # Empty for localhost through domain sockets or '127.0.0.1' for localhost through TCP.
-            'PORT': '',                      # Set to empty string for default.
-        }
-    }
+DATABASES['native'] = DATABASES['default']
+DATABASES['default'] = {'ENGINE': 'dbindexer', 'TARGET': 'native'}
+#AUTOLOAD_SITECONF = 'indexes'
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
@@ -102,11 +90,11 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'autoload.middleware.AutoloadMiddleware',
+
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
     # Uncomment the next line for simple clickjacking protection:
     # 'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
@@ -121,8 +109,15 @@ TEMPLATE_DIRS = (
 )
 
 INSTALLED_APPS = (
-    'django.contrib.auth',
+    'django.contrib.admin',
     'django.contrib.contenttypes',
+    'django.contrib.auth',
+    'django.contrib.sessions',
+    'django.contrib.staticfiles',
+    'djangotoolbox',
+    'autoload',
+    'dbindexer',
+
     'blog',
 )
 
@@ -154,9 +149,3 @@ LOGGING = {
         },
     }
 }
-
-
-try:
-    from developer_settings import *
-except ImportError:
-    pass

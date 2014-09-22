@@ -6250,6 +6250,19 @@ fieldset[disabled] .button-success.active {
   color: #5cb85c;
   background-color: #ffffff;
 }
+.form-container {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 3%;
+  background: #222222;
+  border-bottom-right-radius: 15px;
+  border-bottom-left-radius: 15px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  box-shadow: 0 0 20px black;
+  margin-top: 150px;
+}
 body {
   margin-top: 40px;
 }

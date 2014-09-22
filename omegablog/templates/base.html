@@ -21,9 +21,9 @@
 				</ul>
 				<div class="login-container">
 					{% if request.user.is_authenticated %}
-						<span class="button-success" id="logout-button">{% trans "Logout" %}</span>
+						<a class="button-success" id="logout-button" href="/logout">{% trans "Logout" %}</a>
 					{% else %}
-						<span class="button-success" id="login-button">{% trans "Login" %}</span>
+						<a class="button-success" id="login-button" href="/login">{% trans "Login" %}</a>
 					{% endif %}
 				</div>
 			</div>

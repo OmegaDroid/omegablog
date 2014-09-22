@@ -12,4 +12,9 @@ class LoginButton(ServerTestCase):
     def test_user_not_logged_in___login_button_is_present(self):
         self.assertIsNotNone(wait_for_element(self.driver, By.ID, "login-button"))
 
+    def test_user_clicks_login___taken_to_login_screen(self):
+        wait_for_element(self.driver, By.ID, "login-button").click()
+
+        self.assertEqual(self.live_server_url + "/login", self.driver.current_url)
+
 

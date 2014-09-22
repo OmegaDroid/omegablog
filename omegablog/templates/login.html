@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block main-content %}
+    <div class="container form-container">
+		<form id="login_form" method="post" action="{% url 'django.contrib.auth.views.login' %}">
+			{% csrf_token %}
+
+            <div class="form-group">
+	            <input class="form-control" id="{{ form.username.id }}" name="{{ form.username.name }}" maxlength="254" placeholder="{{ form.username.label }}">
+            </div>
+            <div class="form-group">
+	            <input class="form-control" id="{{ form.password.id }}" name="{{ form.password.name }}" type="password" placeholder="{{ form.password.label }}">
+            </div>
+			<input type="hidden" name="next" value="{{ next }}" />
+
+            <div class="text-center" style="padding-top:10px">
+            {% if form.errors %}
+		        <p class="error">{% trans "Invalid username or password. Try again."%}</p>
+            {% endif %}
+		        <button class="button-success" name="submit" type="submit">{% trans "Log In" %}</button>
+            </div>
+		</form>
+	</div>
+{% endblock %}
