@@ -1,8 +1,11 @@
 {% extends "base.html" %}
+{% load i18n %}
 
 {% block main-content %}
-
-	<h1>Hello World</h1>
-
+	{% if entry %}
+		{% include "entry_content.html" %}
+	{% else %}
+		<h1 id="no-blog-entries-title">{% trans "There are currently no blog entries - sad times" %}</h1>
+	{% endif %}
 {% endblock %}
 

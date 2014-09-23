@@ -1,27 +1,5 @@
 {% extends "base.html" %}
-{% load i18n %}
 
 {% block main-content %}
-	<div class="blog-entry-heading">
-		<h1 id="title">{{ entry.title }}</h1>
-	</div>
-	<div class="blog-entry-content">
-		<p id="content">{{ entry.content }}</p>
-	</div>
-
-	{% if editable %}
-	<script>
-		function delete_entry()
-		{
-			var res = confirm("{% blocktrans %}Continue to delete:\n\n {{ entry.title }}{% endblocktrans %}");
-			if(res)
-			{
-				window.location.href = "/delete_blog_entry/{{ entry.id }}"
-			}
-		}
-	</script>
-
-	<a id="delete-button" class="button-danger pull-right" onclick="delete_entry();">{% trans "Delete" %}</a>
-	<a id="edit-button" class="button-success pull-right" href="/modify_blog_entry/{{ entry.id }}">{% trans "Edit" %}</a>
-	{% endif %}
+	{% include "entry_content.html" %}
 {% endblock %}

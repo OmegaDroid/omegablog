@@ -12,7 +12,10 @@ def home(request):
     :param request: The HttpRequest object
     :return: The HttpResponse object
     """
-    return render_to_response("home.html", RequestContext(request))
+    latest = Entry.objects.all().order_by("-last_edit_time").first()
+    return render_to_response("home.html", RequestContext(request, {
+        "entry": latest,
+    }))
 
 
 @login_required
