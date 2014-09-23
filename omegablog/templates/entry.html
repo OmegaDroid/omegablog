@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block main-content %}
+	<div class="blog-entry-heading">
+		<h1 id="title">{{ entry.title }}</h1>
+	</div>
+	<div class="blog-entry-content">
+		<p id="content">{{ entry.content }}</p>
+	</div>
+
+	{% if editable %}
+	<a id="edit-button" class="button-success pull-right" href="/modify_blog_entry/{{ entry.id }}">{% trans "Edit" %}</a>
+	{% endif %}
+{% endblock %}

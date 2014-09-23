@@ -1,8 +1,8 @@
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, Http404
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from omegablog.blog.models import EntryForm
+from omegablog.blog.models import EntryForm, Entry
 
 
 def home(request):
@@ -37,3 +37,14 @@ def modify_entry(request, pk=None):
     return render_to_response("modify_blog_entry.html", RequestContext(request, {
         "form": form,
     }))
+
+
+def view_entry(request, pk):
+    try:
+        entry = Entry.objects.get(id=pk)
+        return render_to_response("entry.html", RequestContext(request, {
+            "entry": entry,
+            "editable": request.user.is_authenticated() and request.user == entry.owner,
+        }))
+    except Entry.DoesNotExist:
+        raise Http404
