@@ -1,3 +1,4 @@
+from time import sleep
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
@@ -17,6 +18,11 @@ def wait_for_no_element(driver, by, value, timeout=DEFAULT_TIMEOUT):
         return False
     except TimeoutException:
         return True
+
+
+def wait_for_alert(driver, timeout=DEFAULT_TIMEOUT):
+    WebDriverWait(driver, timeout).until(ec.alert_is_present())
+    return driver.switch_to.alert
 
 
 def logout(driver, server_address):

@@ -1,6 +1,6 @@
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect, Http404, HttpResponseForbidden
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from omegablog.blog.models import EntryForm, Entry
 
@@ -25,7 +25,7 @@ def modify_entry(request, pk=None):
     :param pk: The primary key of the entry to edit. If None a new entry form is created
     :return: The HttpResponse object
     """
-    elem = Entry.objects.get(id=int(pk)) if pk else None
+    elem = get_object_or_404(Entry, id=int(pk)) if pk else None
     if elem and elem.owner != request.user or not request.user.is_authenticated():
         return HttpResponseForbidden()
 
@@ -52,11 +52,24 @@ def view_entry(request, pk):
     :param pk: The primary key of the entry to edit. If None a new entry form is created
     :return: The HttpResponse object
     """
-    try:
-        entry = Entry.objects.get(id=pk)
-        return render_to_response("entry.html", RequestContext(request, {
-            "entry": entry,
-            "editable": request.user.is_authenticated() and request.user == entry.owner,
-        }))
-    except Entry.DoesNotExist:
-        raise Http404
+    entry = get_object_or_404(Entry, id=pk)
+    return render_to_response("entry.html", RequestContext(request, {
+        "entry": entry,
+        "editable": request.user.is_authenticated() and request.user == entry.owner,
+    }))
+
+
+def delete_entry(request, pk):
+    """
+    Handles deleting a blog post and redirecting home.
+
+    :param request: The HttpRequest object
+    :param pk: The primary key of the entry to edit. If None a new entry form is created
+    :return: The HttpResponse object
+    """
+    elem = get_object_or_404(Entry, id=int(pk))
+    if elem and elem.owner != request.user or not request.user.is_authenticated():
+        return HttpResponseForbidden()
+
+    elem.delete()
+    return HttpResponseRedirect("/")

@@ -6250,6 +6250,93 @@ fieldset[disabled] .button-success.active {
   color: #5cb85c;
   background-color: #ffffff;
 }
+.button-danger {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.428571429;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #ffffff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.button-danger:focus,
+.button-danger:active:focus,
+.button-danger.active:focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.button-danger:hover,
+.button-danger:focus {
+  color: #333333;
+  text-decoration: none;
+}
+.button-danger:active,
+.button-danger.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.button-danger.disabled,
+.button-danger[disabled],
+fieldset[disabled] .button-danger {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.button-danger:hover,
+.button-danger:focus,
+.button-danger:active,
+.button-danger.active,
+.open > .dropdown-toggle.button-danger {
+  color: #ffffff;
+  background-color: #c9302c;
+  border-color: #ac2925;
+}
+.button-danger:active,
+.button-danger.active,
+.open > .dropdown-toggle.button-danger {
+  background-image: none;
+}
+.button-danger.disabled,
+.button-danger[disabled],
+fieldset[disabled] .button-danger,
+.button-danger.disabled:hover,
+.button-danger[disabled]:hover,
+fieldset[disabled] .button-danger:hover,
+.button-danger.disabled:focus,
+.button-danger[disabled]:focus,
+fieldset[disabled] .button-danger:focus,
+.button-danger.disabled:active,
+.button-danger[disabled]:active,
+fieldset[disabled] .button-danger:active,
+.button-danger.disabled.active,
+.button-danger[disabled].active,
+fieldset[disabled] .button-danger.active {
+  background-color: #d9534f;
+  border-color: #d43f3a;
+}
+.button-danger .badge {
+  color: #d9534f;
+  background-color: #ffffff;
+}
 .form-container {
   display: block;
   margin-left: auto;
