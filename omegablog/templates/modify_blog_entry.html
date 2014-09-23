@@ -3,15 +3,15 @@
 
 {% block main-content %}
 	<div class="container form-container">
-		<form id="modify_entry_form" method="post" action="{% url 'blog.views.modify_entry' %}">
+		<form id="modify_entry_form" method="post" action="{{ request.path }}">
 			{% csrf_token %}
 
             <div class="form-group {% if form.title.errors %} has-error{% endif %}">
-				<input class="form-control" id="{{ form.title.id }}" name="{{ form.title.name }}" maxlength="100" placeholder="{{ form.title.label }}" value="{{ form.title.data|default:"" }}">
+				<input class="form-control" id="{{ form.title.id }}" name="{{ form.title.name }}" maxlength="100" placeholder="{{ form.title.label }}" value="{{ form.instance.title|default:"" }}">
 	        </div>
 
             <div class="form-group {% if form.content.errors %} has-error{% endif %}">
-				<textarea class="form-control" id="{{ form.content.id }}" name="{{ form.content.name }}" placeholder="{{ form.content.label }}">{{ form.content.data|default:"" }}</textarea>
+				<textarea class="form-control" id="{{ form.content.id }}" name="{{ form.content.name }}" placeholder="{{ form.content.label }}">{{ form.instance.content|default:"" }}</textarea>
 	        </div>
 
             <div class="text-center" style="padding-top:10px">
