@@ -249,4 +249,3 @@ class ViewPostPage(ServerTestCase):
         self._wait_for_delete(pk)
 
         self.assertEqual(self.live_server_url + "/", self.driver.current_url)
-

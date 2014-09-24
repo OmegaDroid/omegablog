@@ -8,4 +8,3 @@ def now():
     :return: The current timezone aware time
     """
     return timezone.now()
-

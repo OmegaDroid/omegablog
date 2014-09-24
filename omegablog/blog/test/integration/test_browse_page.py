@@ -134,4 +134,3 @@ class BrowsePage(ServerTestCase):
         self.assertEqual(2, num_entries)
         self.assertEqual("Modified Test Entry", titles[0])
         self.assertEqual("Second Test Entry", titles[1])
-

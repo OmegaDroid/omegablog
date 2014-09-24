@@ -76,5 +76,3 @@ class EntryCreation(TestCase):
         entry = Entry.objects.get(title="new title")
 
         self.assertEqual(datetime(2014, 1, 1, tzinfo=utc), entry.last_edit_time)
-
-

@@ -39,4 +39,3 @@ class LoginButton(ServerTestCase):
         wait_for_element(self.driver, By.ID, "logout-link").click()
 
         self.assertIsNotNone(wait_for_element(self.driver, By.ID, "login-link"))
-

@@ -22,5 +22,5 @@ class ViewModifyEntry(TestCase):
         ).save()
 
         pk = Entry.objects.all()[0].id
-        
+
         self.assertIsInstance(modify_entry(request, pk), HttpResponseForbidden)
