@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 from django.test import TestCase
 from django.utils.timezone import utc
 from mock import patch, Mock
-from omegablog.blog.models import Entry
+from blog.models import Entry
 
 
 class EntryCreation(TestCase):

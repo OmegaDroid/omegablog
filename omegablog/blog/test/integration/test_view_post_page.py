@@ -1,9 +1,9 @@
 from time import sleep
 from django.contrib.auth import get_user_model
 from selenium.webdriver.common.by import By
-from omegablog.blog.models import Entry
-from omegablog.test_utils.test_case import ServerTestCase
-from omegablog.test_utils.webdriver import wait_for_element, logout, login_as, wait_for_no_element, wait_for_alert
+from blog.models import Entry
+from test_utils.test_case import ServerTestCase
+from test_utils.webdriver import wait_for_element, logout, login_as, wait_for_no_element, wait_for_alert
 
 
 class ViewPostPage(ServerTestCase):

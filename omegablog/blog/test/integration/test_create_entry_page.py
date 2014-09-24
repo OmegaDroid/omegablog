@@ -1,8 +1,8 @@
 from django.contrib.auth import get_user_model
 from selenium.webdriver.common.by import By
-from omegablog.blog.models import Entry
-from omegablog.test_utils.test_case import ServerTestCase
-from omegablog.test_utils.webdriver import logout, wait_for_element, login_as
+from blog.models import Entry
+from test_utils.test_case import ServerTestCase
+from test_utils.webdriver import logout, wait_for_element, login_as
 
 
 class CreateEntryPage(ServerTestCase):

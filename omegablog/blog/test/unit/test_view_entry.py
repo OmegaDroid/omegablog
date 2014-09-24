@@ -1,6 +1,6 @@
 from django.http import HttpRequest, Http404
 from django.test import TestCase
-from omegablog.blog.views import view_entry
+from blog.views import view_entry
 
 
 class ViewEntry(TestCase):

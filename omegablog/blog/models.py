@@ -4,7 +4,7 @@ from django.db.models.signals import pre_save
 from django.dispatch import receiver
 from django import forms
 
-from omegablog.utils.date_time import now
+from blog_utils.date_time import now
 
 
 class Entry(models.Model):

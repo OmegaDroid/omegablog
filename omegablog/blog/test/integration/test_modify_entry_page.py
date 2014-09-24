@@ -3,9 +3,9 @@ from django.contrib.auth import get_user_model
 from django.utils.timezone import utc
 from mock import patch
 from selenium.webdriver.common.by import By
-from omegablog.blog.models import Entry
-from omegablog.test_utils.test_case import ServerTestCase
-from omegablog.test_utils.webdriver import wait_for_element, logout, login_as
+from blog.models import Entry
+from test_utils.test_case import ServerTestCase
+from test_utils.webdriver import wait_for_element, logout, login_as
 
 
 class ModifyEntryPage(ServerTestCase):

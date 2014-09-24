@@ -1,8 +1,8 @@
 from django.contrib.auth import get_user_model
 from django.http import HttpRequest, HttpResponseForbidden
 from django.test import TestCase
-from omegablog.blog.models import Entry
-from omegablog.blog.views import delete_entry
+from blog.models import Entry
+from blog.views import delete_entry
 
 
 class ViewDeleteEntry(TestCase):
