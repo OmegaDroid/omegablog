@@ -1,5 +1,9 @@
+from datetime import datetime
 from time import sleep
+from django.conf import settings
 from django.contrib.auth import get_user_model
+from django.utils.timezone import utc
+from mock import patch, Mock
 from selenium.webdriver.common.by import By
 from blog.models import Entry
 from test_utils.test_case import ServerTestCase
@@ -49,6 +53,42 @@ class ViewPostPage(ServerTestCase):
         self.driver.get(self.live_server_url + "/blog_entry/" + str(pk))
         content_text = wait_for_element(self.driver, By.ID, "content").text
         self.assertEqual("Test Post Content", content_text)
+
+    @patch("blog.models.now", Mock(return_value=datetime(2014, 1, 2, 21, 12, tzinfo=utc)))
+    def test_navigate_to_existing_item___published_time_is_present(self):
+        Entry(
+            title="Test Post Title",
+            content="Test Post Content",
+            owner=self.owner,
+        ).save()
+
+        pk = Entry.objects.all()[0].id
+
+        self.driver.get(self.live_server_url + "/blog_entry/" + str(pk))
+        publish_time = wait_for_element(self.driver, By.CLASS_NAME, "publish-time").text
+        self.assertEqual("Published: 02 Jan 2014 21:12:00", publish_time)
+
+    @patch("blog.models.now")
+    def test_navigate_to_existing_item___published_time_is_present(self, mock_now):
+        def now_time():
+            for date in (datetime(2013, 2, 3, 4, 5, 6, tzinfo=utc), datetime(2014, 7, 8, 9, 10, 11, tzinfo=utc)):
+                yield date
+        mock_now.side_effect = now_time()
+
+        Entry(
+            title="Test Post Title",
+            content="Test Post Content",
+            owner=self.owner,
+        ).save()
+
+        entry = Entry.objects.all()[0]
+        pk = entry.id
+        entry.title = "Modified Title"
+        entry.save()
+
+        self.driver.get(self.live_server_url + "/blog_entry/" + str(pk))
+        publish_time = wait_for_element(self.driver, By.CLASS_NAME, "publish-time").text
+        self.assertEqual("Published: 03 Feb 2013 04:05:06 (Edit: 08 Jul 2014 09:10:11)", publish_time)
 
     def test_navigate_to_existing_item_as_owner___edit_button_is_present(self):
         Entry(

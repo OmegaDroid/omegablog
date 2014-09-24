@@ -1,2 +1,3 @@
-<a class="title" href="/blog_entry/{{ entry.id }}">{{ entry.title }}</a>
+<a class="title" href="/blog_entry/{{ entry.id }}">{{ entry.title }}</a><br/>
+{% include "publish_time.html" with creation_time=entry.creation_time last_edit_time=entry.last_edit_time %}
 <p class="content">{{ entry.content }}</p>

@@ -6185,6 +6185,10 @@ body {
   padding-bottom: 5px;
   border-bottom: lightgrey solid 1px;
 }
+.publish-time {
+  color: darkgrey;
+  font-style: italic;
+}
 .button-success {
   display: inline-block;
   margin-bottom: 0;

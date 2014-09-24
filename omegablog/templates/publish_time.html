@@ -1,0 +1,11 @@
+{%  load i18n %}
+
+{% with creation_time=creation_time|date:"d M Y H:i:s" last_edit_time=last_edit_time|date:"d M Y H:i:s"  %}
+
+{% if creation_time == last_edit_time %}
+	<span class="publish-time">{% blocktrans %}Published: {{ creation_time }}{% endblocktrans %}</span>
+{% else %}
+	<span class="publish-time">{% blocktrans %}Published: {{ creation_time }} (Edit: {{ last_edit_time }}){% endblocktrans %}</span>
+{% endif %}
+
+{% endwith %}

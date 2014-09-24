@@ -24,7 +24,7 @@ def _entry_post_save_update_dates(sender, **kwargs):
     Updates the created and last edited times for the entry
 
     :param sender: The model class sending the commit
-    :param kwargs: Kewyword arguments sent by the signal (https://docs.djangoproject.com/en/1.5/ref/signals/#pre-save)
+    :param kwargs: Keyword arguments sent by the signal (https://docs.djangoproject.com/en/1.5/ref/signals/#pre-save)
     """
     current_time = now()
     entry = kwargs["instance"]
