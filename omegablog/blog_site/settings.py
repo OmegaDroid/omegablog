@@ -10,7 +10,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'HOST': '/cloudsql/elite-epoch-711:omega-blog',
-        'NAME': 'omega-blog-db',
+        'NAME': 'omegablog',
         'USER': 'dan',
     }
 }
@@ -25,10 +25,6 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
-
-# Hosts/domain names that are valid for this site; required if DEBUG is False
-# See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
-ALLOWED_HOSTS = []
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
