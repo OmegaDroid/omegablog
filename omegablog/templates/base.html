@@ -17,9 +17,9 @@
 		<div class="container">
 			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav">
-					<li><a id="home-link" href="/">{% trans "Home" %}</a></li>
-					<li><a id="create-entry-link" href="/create_blog_entry">{% trans "Create" %}</a></li>
-					<li><a id="browse-link" href="/browse">{% trans "Browse" %}</a></li>
+					<li class="nav-bar-link"><a id="home-link" href="/">{% trans "Home" %}</a></li>
+					<li class="nav-bar-link"><a id="browse-link" href="/browse">{% trans "Browse" %}</a></li>
+					<li class="nav-bar-link"><a id="create-entry-link" href="/create_blog_entry">{% trans "Create" %}</a></li>
 				</ul>
 				<div class="login-container">
 					{% if request.user.is_authenticated %}

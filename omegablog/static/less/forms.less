@@ -1,9 +1,19 @@
 .form-container
 {
-      .center-block;
-      padding: 3%;
-      background: @navbar-inverse-bg;
-      .border-radius( 15px );
-      box-shadow:0 0 20px black;
-      margin-top: 150px;
+    .center-block;
+    padding: 3%;
+    background: @navbar-inverse-bg;
+    .border-radius( 15px );
+    box-shadow:0 0 20px black;
+    margin-top: 150px;
+
+    .has-error .form-control
+    {
+        background: #FFD8D8;
+    }
+
+    .form-errors
+    {
+        color: white;
+    }
 }

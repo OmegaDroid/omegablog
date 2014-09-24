@@ -30,3 +30,14 @@ body
     color: darkgrey;
     font-style: italic;
 }
+
+.nav-bar-link > a
+{
+    color: @navbar-inverse-link-hover-color!important;
+
+    &:hover
+    {
+        color: @navbar-inverse-bg!important;
+        background: @navbar-inverse-link-hover-color!important;
+    }
+}

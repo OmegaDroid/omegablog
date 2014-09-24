@@ -7,6 +7,17 @@ from blog.models import EntryForm, Entry
 from blog_utils.queries import first_or_none
 
 
+def _user_can_edit(entry, user):
+    """
+    Tests is a user can edit a given blog entry
+
+    :param entry: The entry to check
+    :param user: The user to check against
+    :return: True is the user can edit the entry, False otherwise
+    """
+    return user.is_authenticated() and user == entry.owner,
+
+
 def home(request):
     """
     Generates the blog landing page
@@ -17,6 +28,7 @@ def home(request):
     latest = first_or_none(Entry.objects.all().order_by("-last_edit_time"))
     return render_to_response("home.html", RequestContext(request, {
         "entry": latest,
+        "editable": _user_can_edit(latest, request.user),
     }))
 
 
@@ -60,7 +72,7 @@ def view_entry(request, pk):
     entry = get_object_or_404(Entry, id=pk)
     return render_to_response("entry.html", RequestContext(request, {
         "entry": entry,
-        "editable": request.user.is_authenticated() and request.user == entry.owner,
+        "editable": _user_can_edit(entry, request.user),
     }))
 
 

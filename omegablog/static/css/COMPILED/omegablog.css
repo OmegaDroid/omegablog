@@ -6189,6 +6189,13 @@ body {
   color: darkgrey;
   font-style: italic;
 }
+.nav-bar-link > a {
+  color: #ffffff !important;
+}
+.nav-bar-link > a:hover {
+  color: #222222 !important;
+  background: #ffffff !important;
+}
 .button-success {
   display: inline-block;
   margin-bottom: 0;
@@ -6376,9 +6383,18 @@ fieldset[disabled] .button-danger.active {
   box-shadow: 0 0 20px black;
   margin-top: 150px;
 }
+.form-container .has-error .form-control {
+  background: #FFD8D8;
+}
+.form-container .form-errors {
+  color: white;
+}
 .blog-entry-heading {
   padding-bottom: 5px;
   border-bottom: lightgrey solid 1px;
+}
+#delete-button {
+  margin-left: 3px;
 }
 .blog-listing {
   list-style-type: none;
