@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block main-content %}
+	<h1 class="page-sep-below">{% trans "Browse Blog Entries"%}</h1>
+	{% if entries %}
+		<ul class="blog-listing">
+		{% for entry in entries %}
+			<li class="blog-listing-entry">{% include "browse_entry.html" %}</li>
+		{% endfor %}
+		</ul>
+	{% endif %}
+{% endblock %}

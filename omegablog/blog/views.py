@@ -78,3 +78,15 @@ def delete_entry(request, pk):
 
     elem.delete()
     return HttpResponseRedirect("/")
+
+
+def browse_entries(request):
+    """
+    Generates the page for browsing blog entries.
+
+    :param request: The HttpRequest object
+    :return: The HttpResponse object
+    """
+    return render_to_response('browse_entries.html', RequestContext(request, {
+        "entries": Entry.objects.order_by("-last_edit_time"),
+    }))

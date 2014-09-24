@@ -12,6 +12,11 @@ def wait_for_element(driver, by, value, timeout=DEFAULT_TIMEOUT):
     return WebDriverWait(driver, timeout).until(ec.presence_of_element_located((by, value)))
 
 
+def wait_for_all_elements(driver, by, value, timeout=DEFAULT_TIMEOUT):
+    WebDriverWait(driver, timeout).until(ec.presence_of_element_located((by, value)))
+    return driver.find_elements(by, value)
+
+
 def wait_for_no_element(driver, by, value, timeout=DEFAULT_TIMEOUT):
     try:
         WebDriverWait(driver, timeout).until(ec.presence_of_element_located((by, value)))

@@ -6163,6 +6163,28 @@ button.close {
     display: none !important;
   }
 }
+body {
+  margin-top: 40px;
+}
+.login-container {
+  float: right !important;
+}
+.login-container .button-success {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+.login-container .button-success.btn-sm {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.login-container .button-success.btn-xs {
+  margin-top: 14px;
+  margin-bottom: 14px;
+}
+.page-sep-below {
+  padding-bottom: 5px;
+  border-bottom: lightgrey solid 1px;
+}
 .button-success {
   display: inline-block;
   margin-bottom: 0;
@@ -6350,21 +6372,25 @@ fieldset[disabled] .button-danger.active {
   box-shadow: 0 0 20px black;
   margin-top: 150px;
 }
-body {
-  margin-top: 40px;
+.blog-entry-heading {
+  padding-bottom: 5px;
+  border-bottom: lightgrey solid 1px;
 }
-.login-container {
-  float: right !important;
+.blog-listing {
+  list-style-type: none;
 }
-.login-container .button-success {
-  margin-top: 8px;
-  margin-bottom: 8px;
+.blog-listing .blog-listing-entry {
+  padding-bottom: 5px;
+  border-bottom: lightgrey solid 1px;
 }
-.login-container .button-success.btn-sm {
-  margin-top: 10px;
-  margin-bottom: 10px;
+.blog-listing .blog-listing-entry .title {
+  font-size: x-large;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
-.login-container .button-success.btn-xs {
-  margin-top: 14px;
-  margin-bottom: 14px;
+.blog-listing .blog-listing-entry .content {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
