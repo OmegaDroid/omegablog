@@ -21,6 +21,6 @@ class ViewDeleteEntry(TestCase):
             owner=self.owner,
         ).save()
 
-        pk = Entry.objects.first().id
+        pk = Entry.objects.all()[0].id
 
         self.assertIsInstance(delete_entry(request, pk), HttpResponseForbidden)

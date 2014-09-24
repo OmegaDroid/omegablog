@@ -1,8 +1,10 @@
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect, Http404, HttpResponseForbidden
+from django.http import HttpResponseRedirect, HttpResponseForbidden
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
+
 from blog.models import EntryForm, Entry
+from blog_utils.queries import first_or_none
 
 
 def home(request):
@@ -12,7 +14,7 @@ def home(request):
     :param request: The HttpRequest object
     :return: The HttpResponse object
     """
-    latest = Entry.objects.all().order_by("-last_edit_time").first()
+    latest = first_or_none(Entry.objects.all().order_by("-last_edit_time"))
     return render_to_response("home.html", RequestContext(request, {
         "entry": latest,
     }))

@@ -21,7 +21,7 @@ class ModifyEntryPage(ServerTestCase):
             owner=self.owner,
         ).save()
 
-        pk = Entry.objects.first().id
+        pk = Entry.objects.all()[0].id
 
         login_as(self.driver, self.live_server_url, "user", "password")
 
@@ -36,7 +36,7 @@ class ModifyEntryPage(ServerTestCase):
             owner=self.owner,
         ).save()
 
-        pk = Entry.objects.first().id
+        pk = Entry.objects.all()[0].id
 
         login_as(self.driver, self.live_server_url, "user", "password")
 
@@ -51,7 +51,7 @@ class ModifyEntryPage(ServerTestCase):
             owner=self.owner,
         ).save()
 
-        pk = Entry.objects.first().id
+        pk = Entry.objects.all()[0].id
 
         login_as(self.driver, self.live_server_url, "user", "password")
         self.driver.get(self.live_server_url + "/modify_blog_entry/" + str(pk))
@@ -68,7 +68,7 @@ class ModifyEntryPage(ServerTestCase):
             owner=self.owner,
         ).save()
 
-        pk = Entry.objects.first().id
+        pk = Entry.objects.all()[0].id
 
         login_as(self.driver, self.live_server_url, "user", "password")
         self.driver.get(self.live_server_url + "/modify_blog_entry/" + str(pk))
@@ -91,7 +91,7 @@ class ModifyEntryPage(ServerTestCase):
             owner=self.owner,
         ).save()
 
-        pk = Entry.objects.first().id
+        pk = Entry.objects.all()[0].id
 
         login_as(self.driver, self.live_server_url, "user", "password")
         self.driver.get(self.live_server_url + "/modify_blog_entry/" + str(pk))

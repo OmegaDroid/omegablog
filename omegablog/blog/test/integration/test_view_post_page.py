@@ -31,7 +31,7 @@ class ViewPostPage(ServerTestCase):
             owner=self.owner,
         ).save()
 
-        pk = Entry.objects.first().id
+        pk = Entry.objects.all()[0].id
 
         self.driver.get(self.live_server_url + "/blog_entry/" + str(pk))
         title_text = wait_for_element(self.driver, By.ID, "title").text
@@ -44,7 +44,7 @@ class ViewPostPage(ServerTestCase):
             owner=self.owner,
         ).save()
 
-        pk = Entry.objects.first().id
+        pk = Entry.objects.all()[0].id
 
         self.driver.get(self.live_server_url + "/blog_entry/" + str(pk))
         content_text = wait_for_element(self.driver, By.ID, "content").text
@@ -57,7 +57,7 @@ class ViewPostPage(ServerTestCase):
             owner=self.owner,
         ).save()
 
-        pk = Entry.objects.first().id
+        pk = Entry.objects.all()[0].id
 
         login_as(self.driver, self.live_server_url, "user", "password")
 
@@ -71,7 +71,7 @@ class ViewPostPage(ServerTestCase):
             owner=self.owner,
         ).save()
 
-        pk = Entry.objects.first().id
+        pk = Entry.objects.all()[0].id
 
         login_as(self.driver, self.live_server_url, "nonowner", "password")
 
@@ -85,7 +85,7 @@ class ViewPostPage(ServerTestCase):
             owner=self.owner,
         ).save()
 
-        pk = Entry.objects.first().id
+        pk = Entry.objects.all()[0].id
 
         self.driver.get(self.live_server_url + "/blog_entry/" + str(pk))
         self.assertTrue(wait_for_no_element(self.driver, By.ID, "edit-button"))
@@ -97,7 +97,7 @@ class ViewPostPage(ServerTestCase):
             owner=self.owner,
         ).save()
 
-        pk = Entry.objects.first().id
+        pk = Entry.objects.all()[0].id
 
         login_as(self.driver, self.live_server_url, "user", "password")
         self.driver.get(self.live_server_url + "/blog_entry/" + str(pk))
@@ -112,7 +112,7 @@ class ViewPostPage(ServerTestCase):
             owner=self.owner,
         ).save()
 
-        pk = Entry.objects.first().id
+        pk = Entry.objects.all()[0].id
 
         login_as(self.driver, self.live_server_url, "user", "password")
 
@@ -126,7 +126,7 @@ class ViewPostPage(ServerTestCase):
             owner=self.owner,
         ).save()
 
-        pk = Entry.objects.first().id
+        pk = Entry.objects.all()[0].id
 
         login_as(self.driver, self.live_server_url, "nonowner", "password")
 
@@ -140,7 +140,7 @@ class ViewPostPage(ServerTestCase):
             owner=self.owner,
         ).save()
 
-        pk = Entry.objects.first().id
+        pk = Entry.objects.all()[0].id
 
         self.driver.get(self.live_server_url + "/blog_entry/" + str(pk))
         self.assertTrue(wait_for_no_element(self.driver, By.ID, "delete-button"))
@@ -152,7 +152,7 @@ class ViewPostPage(ServerTestCase):
             owner=self.owner,
         ).save()
 
-        pk = Entry.objects.first().id
+        pk = Entry.objects.all()[0].id
 
         login_as(self.driver, self.live_server_url, "user", "password")
         self.driver.get(self.live_server_url + "/blog_entry/" + str(pk))
@@ -168,7 +168,7 @@ class ViewPostPage(ServerTestCase):
             owner=self.owner,
         ).save()
 
-        pk = Entry.objects.first().id
+        pk = Entry.objects.all()[0].id
 
         login_as(self.driver, self.live_server_url, "user", "password")
         self.driver.get(self.live_server_url + "/blog_entry/" + str(pk))
@@ -184,7 +184,7 @@ class ViewPostPage(ServerTestCase):
             owner=self.owner,
         ).save()
 
-        pk = Entry.objects.first().id
+        pk = Entry.objects.all()[0].id
 
         login_as(self.driver, self.live_server_url, "user", "password")
         self.driver.get(self.live_server_url + "/blog_entry/" + str(pk))
@@ -200,7 +200,7 @@ class ViewPostPage(ServerTestCase):
             owner=self.owner,
         ).save()
 
-        pk = Entry.objects.first().id
+        pk = Entry.objects.all()[0].id
 
         login_as(self.driver, self.live_server_url, "user", "password")
         self.driver.get(self.live_server_url + "/blog_entry/" + str(pk))
