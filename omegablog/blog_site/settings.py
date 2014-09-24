@@ -9,7 +9,7 @@ ALLOWED_HOSTS = ["*"]
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'HOST': '/cloudsql/elite-epoch-711:omega-blog',
+        'HOST': '/cloudsql/elite-epoch-711:newinstance',
         'NAME': 'omegablog',
         'USER': 'dan',
     }

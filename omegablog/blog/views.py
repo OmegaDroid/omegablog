@@ -15,7 +15,7 @@ def _user_can_edit(entry, user):
     :param user: The user to check against
     :return: True is the user can edit the entry, False otherwise
     """
-    return user.is_authenticated() and user == entry.owner,
+    return entry and user.is_authenticated() and user == entry.owner
 
 
 def home(request):
