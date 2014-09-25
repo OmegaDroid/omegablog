@@ -12,7 +12,9 @@
 <script>
 	function delete_entry()
 	{
-		var res = confirm("{% blocktrans %}Continue to delete:\n\n {{ entry.title }}{% endblocktrans %}");
+		{% with title=entry.title %}
+		var res = confirm("{% blocktrans %}Continue to delete:\n\n {{ title }}{% endblocktrans %}");
+		{% endwith %}
 		if(res)
 		{
 			window.location.href = "/delete_blog_entry/{{ entry.id }}"
