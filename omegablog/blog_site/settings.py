@@ -11,7 +11,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'HOST': '/cloudsql/elite-epoch-711:newinstance',
         'NAME': 'omegablog',
-        'USER': 'dan',
+        'USER': 'root',
     }
 }
 
