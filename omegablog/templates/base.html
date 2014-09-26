@@ -23,9 +23,9 @@
 				</ul>
 				<div class="login-container">
 					{% if request.user.is_authenticated %}
-						<a class="button-success" id="logout-link" href="accounts/logout">{% trans "Logout" %}</a>
+						<a class="button-success" id="logout-link" href="/accounts/logout">{% trans "Logout" %}</a>
 					{% else %}
-						<a class="button-success" id="login-link" href="accounts/login/?next=/">{% trans "Login" %}</a>
+						<a class="button-success" id="login-link" href="/accounts/login/?next={{ request.path }}">{% trans "Login" %}</a>
 					{% endif %}
 				</div>
 			</div>
